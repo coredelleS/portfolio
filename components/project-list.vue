@@ -5,7 +5,7 @@
   <section v-else>
     <ul class="grid grid-cols-1 gap-4">
       <li
-        v-for="repository in data"
+        v-for="repository in repos"
         :key="repository.id"
         class="border border-gray-200 rounded-sm p-4 hover:bg-gray-100 font-mono"
       >
@@ -24,7 +24,13 @@
 </template>
 
 <script setup>
+// data is a reactive property
 const { error, pending, data } = await useFetch(
   "https://api.github.com/users/piotr-jura-udemy/repos"
 );
+
+// now the data is converted to a computed prop that filters out those without descriptions
+const repos = computed (
+  () => data.value.filter(repo => repo.description)
+)
 </script>
