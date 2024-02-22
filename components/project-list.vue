@@ -30,7 +30,9 @@ const { error, pending, data } = await useFetch(
 );
 
 // now the data is converted to a computed prop that filters out those without descriptions
-const repos = computed (
-  () => data.value.filter(repo => repo.description)
-)
+const repos = computed(() =>
+  data.value
+    .filter((repo) => repo.description)
+    .sort((a, b) => b.stargazers_count - a.stargazers_count)
+);
 </script>
