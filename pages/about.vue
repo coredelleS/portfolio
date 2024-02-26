@@ -1,9 +1,5 @@
 <template>
-  <div>This is my page.</div>
+  <article class="prose dark:prose-invert prose-h1:text-2xl">
+    <ContentDoc path="/about" />
+  </article>
 </template>
-
-<script setup>
-// definePageMeta({
-//   layout: "another",
-// });
-</script>
